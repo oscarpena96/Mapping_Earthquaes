@@ -1,6 +1,6 @@
 
 // We create the tile layer that will be the background of our map.
-let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles//{z}/{x}/{y}?access_token={accessToken}', {
+let light = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles//{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
@@ -23,8 +23,8 @@ let baseMaps = {
   light: light
 };
 
-// Accessing the Toronto neighborhoods GeoJSON URL.
-let torontoHoods = "https://raw.githubusercontent.com/oscarpena96/Mapping_Earthquakes/main/torontoNeighborhoods.json";
+// Accesing the Toronto airline route GeoJson URL
+let torontoData = "https://raw.githubusercontent.com/oscarpena96/Mapping_Earthquakes/main/torontoRoutes.json"
 
 //having my own style 
 let myStyle = {
@@ -33,10 +33,16 @@ let myStyle = {
 }
 
 //grabbing the toronto data with D3
-d3.json(torontoHoods).then(function(data){
+d3.json(torontoData).then(function(data){
   console.log(data);
   //create layer with retrieved data
-  L.geoJSON(data).addTo(map)
+  L.geoJSON(data, { 
+    stye: myStyle,
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("<h3> Airline: " + feature.properties.airline + "</h3> <hr> <h3> Destination:" +
+      feature.properties.dst + "</h3>")
+    }
+  }).addTo(map)
 })
 
 
