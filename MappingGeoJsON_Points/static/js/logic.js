@@ -22,3 +22,14 @@ d3.json(airportData).then(function(data){
 
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
+
+
+d3.json(airportData).then(function(data){
+  console.log(data)
+  //Create a GeoJson layer with the retrieved data
+  L.geoJson(data, {
+    onEachFeature: function(feature,layer){
+      layer.bindPopup("<h1>Airport code:" + feature.properties.faa + "</h1> <p> Airport name:" + feature.properties.name + "</p>");
+    }
+  }).addTo(map)
+})
