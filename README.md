@@ -28,4 +28,4 @@ nearby, but there is a good point in the Pacific Ocean, there is a structure cal
 still active hence the name (you may have heard of the Krakatoa (1883)) and this is a big reason why most mayor earthquakes. You might think that this movements only 
 affect us but you are in the contrary, thanks to this crashes we have mountains and different scenary and different species.
 
-![](https://github.com/oscarpena96/Mapping_Earthquakes/tree/main/Earthquakes%20Challenge/images/earthquake_map.png)
+![](https://github.com/oscarpena96/Mapping_Earthquakes/tree/main/EarthquakesChallenge/images/earthquake_map.png)
